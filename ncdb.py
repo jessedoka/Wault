@@ -1,9 +1,9 @@
 from werkzeug.security import generate_password_hash
 from datetime import datetime, timedelta
-from Vault.vault import Metavault as MV
-from user import User
+from main.vault import Metavault as MV
 
-net = MV('ONOchatDB', 'user_accounts.json')
+
+net = MV('TESTDB', 'data.json')
 connection = net.connnection()
 if connection:
     print('Created')
@@ -15,3 +15,6 @@ def save_user(username:  str, email: str, password: str):
         'email': email,
         'password': password_hash
     })
+
+if __name__ == '__main__':
+    save_user('jesse', 'non@gmail.com', 'Droiw142')
