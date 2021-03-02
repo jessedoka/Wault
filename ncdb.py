@@ -18,3 +18,4 @@ def save_user(username:  str, email: str, password: str):
 
 if __name__ == '__main__':
     save_user('jesse', 'non@gmail.com', 'Droiw142')
+    save_user('jack', 'two@gmail.com', 'Jaxlol123')
