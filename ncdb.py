@@ -7,7 +7,7 @@ connection = net.connnection()
 if connection:
     print('Created')
 
-  def save_user(username:  str, email: str, password: str):
+def save_user(username:  str, email: str, password: str):
     password_hash = generate_password_hash(password)
     net.insert_object({
         '_id': username,
