@@ -1,3 +1,4 @@
+from example import get_dups
 import os
 import string
 import random
@@ -53,6 +54,17 @@ class Metavault:
         # This removes any extra quotations
         return result
 
+    def get_dups(a, values=None):
+        if values is None: values = []
+        if (a in values): return True
+        values.append(a)
+        if type(a) == dict:
+            for i, y in a.items():
+                if (get_dups(y, values=values)):
+                    del a[i]
+                    return i
+        return False
+
     def insert_object(self, args):
         try:
             path = Metavault.find_files(self.file)
@@ -69,7 +81,10 @@ class Metavault:
                 key = Metavault.id_generator(12)
                 value.update({key: args})
                 value = json.dumps(value)
+                get_dups(value)
                 f.write(value)
             print(value)
         except FileNotFoundError:
             pass
+
+
